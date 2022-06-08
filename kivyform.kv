@@ -1,0 +1,79 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+<MainWindow>:
+    name: "first"
+    # Variables
+    fname: fname
+    lname: lname
+    city: city
+    country: country
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+
+        GridLayout:
+            cols: 2
+            # First name
+            Label:
+                text: "First Name"
+            TextInput:
+                id: fname
+                multiline: False
+            # Last name
+            Label:
+                text: "Last Name"
+            TextInput:
+                id: lname
+                multiline: False
+            # City
+            Label:
+                text: "City"
+            TextInput:
+                id: city
+                multiline: False
+            # Country
+            Label:
+                text: "Country"
+            TextInput:
+                id: country
+                multiline: False
+        Button:
+            text: "Next"
+            on_press:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+                root.first_press()
+
+<SecondWindow>:
+    name: "second"
+    # Variables
+    interests: interests
+    contact: contact
+
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+
+        GridLayout:
+            cols: 2
+            # Interests
+            Label:
+                text: "Interests"
+            TextInput:
+                id: interests
+                multiline: False
+            # Contact
+            Label:
+                text: "Contact"
+            TextInput:
+                id: contact
+                multiline: False
+        Button:
+            text: "Go back"
+            on_press:
+                app.root.current = "first"
+                root.manager.transition.direction = "right"
+                root.second_press()
